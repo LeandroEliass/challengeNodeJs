@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Película</title>
+</head>
+<body>
+    <h2>Completar</h2>
+    
+    <form method="post" action="/movie/save" >
+        <fieldset>
+            <label>Título</label>
+            <input type="text" name="title" id="title">
+        </fieldset>
+        <fieldset>
+            <label>Rating</label>
+            <input type="decimal" name="rating" id="rating">
+        </fieldset>
+        <fieldset>
+            <label>Premios</label>
+            <input type="number" name="awards" id="awards">
+        </fieldset>
+        <fieldset>
+            <label>Fecha de Estreno</label>
+            <input type="date" name="release_date" id="release_date">
+        </fieldset>
+        <fieldset>
+            <label>Duración</label>
+            <input type="number" name="length" id="length"> min
+        </fieldset>
+        <fieldset>
+            <label>Género</label>
+            <select  name="genre_id" id="genre_id">
+                <% for( let index = 0; index < genre.length; index++ ) { %>
+                <option value="<%= genre[index].id %>"><%= genre[index].name %></option>
+                <% } %>
+            </select>
+        </fieldset>
+        <button type="submit">Crear</button>
+    </form>
+    <% if (locals.errors) { %>
+        <% for( let index = 0; index < errors.length; index++ ) { %>
+            <li class="errors"> <%= errors.msg %>  </li>
+        <% } %>
+    <% } %>
+    
+</body>
+</html>

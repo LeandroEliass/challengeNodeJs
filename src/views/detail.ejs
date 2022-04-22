@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Movie Details</title>
+</head>
+<body>
+    <H1>Detalles de Pelicula</H1>
+    <h2>Título: <%= movie.title %> </h2>
+    <ul>
+    <li>Rating: <%= movie.rating %> </li>
+    <li>Awards: <%= movie.awards %> </li>
+    <li>Length: <%= movie.length %> </li>
+    <% if (movie.genre) { %>
+    <li>Género: <%= movie.genre.name %> </li>
+    <% }else{ %>
+    <li>Género: No disponible</li> 
+    <% } %> 
+    <li>Actores: </li>
+    <% for( let index = 0; index < movie.actors.length; index++ ) { %>
+        <ol><%= movie.actors[index].first_name %> <%= movie.actors[index].last_name %></ol> 
+    <% } %>
+</ul>
+    
+</body>
+</html>

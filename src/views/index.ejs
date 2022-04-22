@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Películas</title>
+</head>
+<body>
+   <h1>Películas</h1>
+   <section>
+    <a href="/movie/create">Crear Película</a>
+   </section>
+   <ul>
+   <% for( let index = 0; index < movies.length; index++ ) { %>
+    <li><a class="list" href="/<%= movies[index].id %> ">
+        <%= movies[index].title %> </li>
+   <% } %>
+    </ul>
+    
+    
+</body>
+</html>
