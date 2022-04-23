@@ -75,9 +75,17 @@ let controller ={
         .then(function(){
             return res.redirect("/"+req.params.id)})
             .catch(error=>res.send(error))
-        }
-    }
+        },
+    delete: (req,res)=>{
+        db.Movie.destroy({
+            where:{
+                id: req.params.id
+            }
+        })
 
+        .then(function(){res.redirect("/")})
+    }
+}
 
 
 module.exports= controller

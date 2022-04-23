@@ -23,6 +23,14 @@
         <ol><%= movie.actors[index].first_name %> <%= movie.actors[index].last_name %></ol> 
     <% } %>
 </ul>
+<% if (locals.logged && locals.user.rol == 1) { %>
     <a href="/<%= movie.id%>/edit">Editar</a>
+<% } %>
+    
+    <% if (locals.logged) { %>
+        <form method="post" action="/users/logout">
+           <button type="submit">Cerrar Sesión</button>
+        </form>
+       <% } %>
 </body>
 </html>

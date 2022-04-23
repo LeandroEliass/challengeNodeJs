@@ -5,15 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Películas</title>
+    
 </head>
 <body>
    <h1>Películas</h1>
+   <% if (locals.logged) { %>
+    <form method="post" action="/users/logout">
+       <button type="submit">Cerrar Sesión</button>
+    </form>
+   <% }%>
    <section>
-    <a href="/movie/create">Crear Película</a>
+    <% if (locals.logged && locals.user.rol == 1) { %>
+        <a href="/create">Crear Película</a>
+    <% } %>
+    
+    <a href="/users/login">login</a>
+    <a href="/users/register">register</a>
    </section>
    <ul>
    <% for( let index = 0; index < movies.length; index++ ) { %>
-    <li><a class="list" href="/<%= movies[index].id %> ">
+    <li><a class="list" href="/movie/<%= movies[index].id %> ">
         <%= movies[index].title %> </li>
    <% } %>
     </ul>

@@ -14,14 +14,14 @@
             <label>Título</label>
             <input type="text" name="title" id="title">
             <% if (locals.errors && errors.title) { %>
-                <p class="text-danger"> <%= errors.title.msg  %> </p>
+                <p style="color: red"> <%= errors.title.msg  %> </p>
                <% } %>
         </fieldset>
         <fieldset>
             <label>Rating</label>
             <input type="decimal" name="rating" id="rating">
             <% if (locals.errors && errors.rating) { %>
-                <p class="text-danger"> <%= errors.rating.msg  %> </p>
+                <p style="color: red"> <%= errors.rating.msg  %> </p>
                <% } %>
         </fieldset>
         <fieldset>
@@ -36,7 +36,7 @@
             <label>Duración</label>
             <input type="number" name="length" id="length"> min
             <% if (locals.errors && errors.length) { %>
-                <p class="text-danger"> <%= errors.length.msg  %> </p>
+                <p style="color: red"> <%= errors.length.msg  %> </p>
                <% } %>
         </fieldset>
         <fieldset>

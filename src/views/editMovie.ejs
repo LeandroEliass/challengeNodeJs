@@ -49,5 +49,8 @@
         </fieldset>
         <button type="submit">Editar</button>
     </form>
+    <form action="/delete/<%= movie.id %>?m=DELETE" method="post">
+    <button id="deleteButon" class="buttons" type="submit" name="id" value="">Eliminar </button>
+    </form> 
 </body>
 </html>
