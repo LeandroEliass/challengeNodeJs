@@ -47,8 +47,37 @@ let controller ={
         .then(function(){
         return res.redirect("/")})
         .catch(error=>res.send(error))
-        }}
+        }},
+    edit: (req,res)=>{
+        
+        let movieId = db.Movie.findByPk(req.params.id,{
+            include:[{
+                association:"genre"},{association:"actors" }
+            ]})
+        let genres = db.Genre.findAll()
+        Promise.all([movieId, genres])
+        .then(function([movie, genre]){ return res.render("./editMovie", {movie:movie, genre})})
+        .catch(error=>res.send(error))
+    },
+    update: (req,res)=>{
+        db.Movie.update({ 
+            title: req.body.title,
+            rating: req.body.rating,
+            awards:req.body.awards,
+            release_date:req.body.release_date,
+            length:req.body.length,
+            genre_id:req.body.genre_id,
+        },{
+            where:{
+                id: req.params.id
+            }
+        })
+        .then(function(){
+            return res.redirect("/"+req.params.id)})
+            .catch(error=>res.send(error))
+        }
+    }
 
-}
+
 
 module.exports= controller

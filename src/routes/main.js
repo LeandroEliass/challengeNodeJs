@@ -12,5 +12,8 @@ router.get("/:id", controller.detail)
 router.get("/movie/create", controller.create)
 // Save pelicula 
 router.post("/movie/save",validations,controller.save)
-
+// Editar Pelicula
+router.get("/:id/edit",controller.edit)
+// Save edition
+router.put("/:id", controller.update)
 module.exports = router

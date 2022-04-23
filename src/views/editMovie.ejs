@@ -4,37 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Película</title>
+    <title>Editar Película</title>
 </head>
 <body>
-    <h2>Completar</h2>
+    <h2>Editar Película</h2>
     
-    <form method="post" action="/movie/save" >
+    <form method="post" action="/<%=movie.id%>?m=PUT" >
         <fieldset>
             <label>Título</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="<%=movie.title%>">
             <% if (locals.errors && errors.title) { %>
                 <p class="text-danger"> <%= errors.title.msg  %> </p>
                <% } %>
         </fieldset>
         <fieldset>
             <label>Rating</label>
-            <input type="decimal" name="rating" id="rating">
+            <input type="decimal" name="rating" id="rating" value="<%= movie.rating %>">
             <% if (locals.errors && errors.rating) { %>
                 <p class="text-danger"> <%= errors.rating.msg  %> </p>
                <% } %>
         </fieldset>
         <fieldset>
             <label>Premios</label>
-            <input type="number" name="awards" id="awards">
+            <input type="number" name="awards" id="awards" value="<%= movie.awards %>">
         </fieldset>
         <fieldset>
             <label>Fecha de Estreno</label>
-            <input type="date" name="release_date" id="release_date">
+            <input type="date" name="release_date" id="release_date" value="<%= movie.release_date %>">
         </fieldset>
         <fieldset>
             <label>Duración</label>
-            <input type="number" name="length" id="length"> min
+            <input type="number" name="length" id="length" value="<%= movie.length %>"> min
             <% if (locals.errors && errors.length) { %>
                 <p class="text-danger"> <%= errors.length.msg  %> </p>
                <% } %>
@@ -42,19 +42,12 @@
         <fieldset>
             <label>Género</label>
             <select  name="genre_id" id="genre_id">
-                <% for( let index = 0; index < genre.length; index++ ) { %>
-                <option value="<%= genre[index].id %>"><%= genre[index].name %></option>
-                <% } %>
+                <% genre.forEach(genre => { %>
+                    <option value="<%= genre.id %>" <% if (movie.genre.id == genre.id) { %><%= 'selected' %><% }; %>><%= genre.name %></option>
+                    <% }); %>
             </select>
         </fieldset>
-        <button class="buttons" type="submit">Crear</button>
+        <button type="submit">Editar</button>
     </form>
-    <% if (locals.errors) { %>
-        <% for( let index = 0; index < errors.length; index++ ) { %>
-            <li class="errors"> <%= errors.msg %>  </li>
-        <% } %>
-    <% } %>
-    
-    <button class="buttons" type="reset">Limpiar</button>
 </body>
 </html>

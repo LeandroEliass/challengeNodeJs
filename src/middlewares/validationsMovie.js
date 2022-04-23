@@ -11,6 +11,6 @@ module.exports=[
     .withMessage("Ingresar números positivos"),
     body("length")
     .isLength({ min:2, max:3})
-    .withMessage("En minutos"),
+    .withMessage("Duración en minutos"),
     
 ]
