@@ -18,9 +18,11 @@
     <% if (locals.logged && locals.user.rol == 1) { %>
         <a href="/create">Crear Película</a>
     <% } %>
+    <% if (!locals.logged) { %>
+        <a href="/users/login">login</a>
+        <a href="/users/register">register</a>    
+       <% }%>
     
-    <a href="/users/login">login</a>
-    <a href="/users/register">register</a>
    </section>
    <ul>
    <% for( let index = 0; index < movies.length; index++ ) { %>

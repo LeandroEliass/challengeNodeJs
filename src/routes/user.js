@@ -14,7 +14,7 @@ router.get("/check", function(req, res) {
     if(req.session.user == undefined){
      res.send("No estas logeado")   
     }else{
-        res.send("usuario logeado"+ req.session.user.email)
+        res.send("usuario logeado "+ req.session.user.email)
     }
 })
 
